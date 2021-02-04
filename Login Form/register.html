@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    
+        Roll No. : <input type="text" id="id" ><br><br>
+        Name: <input type="text" id="name"  ><br><br>
+        Contact no. : <input type="text" id="mob"  ><br><br>
+        Email ID: <input type="text" id="email"  ><br><br>
+        
+        <input type="password" id="password" placeholder="Enter your password" ><br><br>
+        <span id="s1"></span>
+
+        <button id="btn">Submit</button>
+
+
+
+    <script>
+
+
+
+        $(document).ready(function()
+        {
+
+        $("#btn").click( function(){
+            var id = $("#id").val();
+            var name = $("#name").val();
+            var mob = $("#mob").val();
+            var email = $("#email").val();
+            var password = $("#password").val();
+
+            
+            $.ajax({
+					type: "POST",
+					url: "register2.php",
+					data: {
+                        id : id,
+                        name : name,
+                        mob : mob,
+                        email : email,
+                        password : password
+					},
+                
+					success:function(data){
+                         $("#s1").html(data); 
+                        }
+					
+
+
+
+
+				});
+        }
+
+
+        );
+
+        }
+
+        );
+    </script>
+
+
+</body>
+</html>
