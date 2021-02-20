@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax sort</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            function onload() {
+
+                var a = $("#sel").val();
+
+                $.ajax({
+                    url: "sort.php",
+                    type: "POST",
+                    data: {
+                        a: a
+                    },
+                    success: function (data) {
+
+                        $("#t1").html(data);
+
+                    }
+                });
+            }
+            onload();
+
+            $("#sel").on("click", function () {
+
+                var a = $("#sel").val();
+
+                $.ajax({
+                    url: "sort.php",
+                    type: "POST",
+                    data: {
+                        a: a
+                    },
+                    success: function (data) {
+
+                        $("#t1").html(data);
+
+
+
+                    }
+
+
+
+                });
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <p>Sort By:</p>
+    <select id="sel" name="sort">
+
+        <option value="none">None</option>
+        <option value="name">By name in desending order</option>
+        <option value="email">By email </option>
+        <option value="cont">By Contact no </option>
+
+    </select>
+
+
+    <table class="table" id="t1">
+
+    </table>
+
+</body>
+
+</html>
