@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX pagination</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script>
+
+
+    </script>
+
+    <script>
+
+        $(document).ready(function(){
+
+            function onload(){
+                
+               $.ajax({
+                   url : "pag.php",
+                   type : "POST",
+                   success : function(data){
+                       $("#t1").html(data);
+                   }
+               }); 
+            }
+            onload();
+
+            $("#pagi a").on("click", function(e){
+                e.preventDefault();
+                var x = $(this).val();
+
+
+               $.ajax({
+                   url : "pag.php",
+                   type : "POST",
+                   data : {x : x},
+                   success : function(data){
+                       $("#t1").html(data);
+                   }
+               }); 
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+
+        <h1>AJAX Pagination</h1>
+
+    <table class="table" id="t1">
+        
+    </table>
+
+
+    
+</body>
+</html>
