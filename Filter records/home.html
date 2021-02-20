@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+
+    <script>
+
+        $(document).ready(function () {
+
+            function onload(){
+            var x = $("#fil").val();
+
+            $.ajax({
+
+                url: "filter.php",
+                type: "POST",
+                data: { x: x },
+                success: function (data) {
+                    $("#t1").html(data);
+                }
+            });
+        }
+        onload();
+
+
+            $("#fil").on("click", function () {
+
+                var x = $("#fil").val();
+
+                $.ajax({
+
+                    url: "filter.php",
+                    type: "POST",
+                    data: { x: x },
+                    success: function (data) {
+                        $("#t1").html(data);
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+
+    <p>Filter By:</p>
+    <select id="fil" name="filter">
+
+        <option value="none">None</option>
+        <option value="male">By Gender(male)</option>
+        <option value="female">By Gender(female) </option>
+
+    </select>
+
+
+    <table class="table" id="t1">
+
+    </table>
+
+</body>
+
+</html>
